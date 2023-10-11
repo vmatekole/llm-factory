@@ -1,0 +1,19 @@
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "Victor Matekole", email = "contrario@matekole.com"},
+]
+dependencies = [
+    "Injector>=0.21.0",
+    "rich>=13.5.2",
+    "langchain>=0.0.312",
+    "gpt4all>=1.0.12",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.black]
+skip-string-normalization = true
