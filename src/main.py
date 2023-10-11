@@ -24,7 +24,7 @@ if __name__ == '__main__':
     Answer: Let's think step by step."""
     prompt = PromptTemplate(template=template, input_variables=['question'])
 
-    llm_chain = LLMChain(prompt=prompt, llm=service.model.provider)
+    llm_chain: LLMChain = LLMChain(prompt=prompt, llm=service.model.provider)
 
     question = 'What happens when it rains somewhere?'
     response = llm_chain.run(question)
