@@ -2,6 +2,7 @@ from abc import ABC
 from typing import Union
 
 from injector import inject
+
 from . import logger
 
 

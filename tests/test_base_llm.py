@@ -1,6 +1,7 @@
 import unittest
 from unittest.mock import Mock
-from llm_maker.base_llm import LLMModel, LLMService, Configuration
+
+from llm_maker.base_llm import Configuration, LLMModel, LLMService
 
 
 class TestLLMModel(unittest.TestCase):

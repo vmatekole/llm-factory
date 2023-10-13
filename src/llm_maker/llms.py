@@ -1,11 +1,12 @@
-from langchain.llms.openai import OpenAI
-from langchain.llms.gpt4all import GPT4All
-from llm_maker.base_llm import Configuration, LLMModel
 from injector import Module, provider, singleton
-
-from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from langchain.chains import LLMChain
+from langchain.llms.gpt4all import GPT4All
+from langchain.llms.openai import OpenAI
+from langchain.prompts import PromptTemplate
+
+from llm_maker.base_llm import Configuration, LLMModel
+
 from . import logger
 
 
@@ -30,11 +31,10 @@ class GPT4AllModel(LLMModel):
 
 
 class LLMFactory(Module):
-
-    models: dict[str, LLMModel] = {'OPENAI': OpenAIModel, 'GPT4ALL': GPT4AllModel}
-
     def __init__(self) -> None:
         super().__init__()
+
+    models: dict[str, LLMModel] = {'OPENAI': OpenAIModel, 'GPT4ALL': GPT4AllModel}
 
     @provider
     @singleton

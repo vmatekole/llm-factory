@@ -19,3 +19,8 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
       - id: double-quote-string-fixer
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        args: ["--profile", "black", "--filter-files"]

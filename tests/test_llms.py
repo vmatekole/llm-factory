@@ -1,13 +1,13 @@
 import os
 import unittest
 from unittest.mock import Mock
+
+from injector import Injector, singleton
+from langchain.llms.openai import OpenAIChat
+
 from llm_maker import LLAMA_MODEL_PATH
 from llm_maker.base_llm import Configuration, LLMModel, LLMService
-
-from llm_maker.llms import OpenAIModel, GPT4AllModel, LLMFactory
-from langchain.llms.openai import OpenAIChat
-from injector import Injector, singleton
-
+from llm_maker.llms import GPT4AllModel, LLMFactory, OpenAIModel
 from main import configure_llm
 
 
