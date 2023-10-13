@@ -1,4 +1,3 @@
-import re
 from abc import ABC
 from typing import Union
 
@@ -22,7 +21,8 @@ class Configuration:
     def __repr__(self) -> str:
         state = ''
         for k, v in self.__dict__.items():
-            state += f'{k}: {v} '
+            if k != '_readonly':
+                state += f'{k}: {v} '
         return state
 
 

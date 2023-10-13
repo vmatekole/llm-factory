@@ -10,10 +10,12 @@ from . import logger
 
 
 class OpenAIModel(LLMModel):
-    def __init__(self, model_name: str, config: Configuration) -> None:
-        super().__init__(model_name)
+    def __init__(self, config: Configuration) -> None:
+        super().__init__(config)
         self._config = config
-        self._provider = OpenAI(model_name, temperature=config.temperature)
+        self._provider = OpenAI(
+            model_name=config.model_name, temperature=config.temperature
+        )
 
 
 class GPT4AllModel(LLMModel):
@@ -22,7 +24,6 @@ class GPT4AllModel(LLMModel):
         self._config: Configuration = config
 
         callbacks = [StreamingStdOutCallbackHandler()]
-        logger.error(f'CONFIG: {config}')
         self._provider: GPT4All = GPT4All(
             model=config.model_filepath, callbacks=callbacks, verbose=True
         )
@@ -30,7 +31,7 @@ class GPT4AllModel(LLMModel):
 
 class LLMFactory(Module):
 
-    models = {'OPENAI': OpenAIModel, 'GPT4ALL': GPT4AllModel}
+    models: dict[str, LLMModel] = {'OPENAI': OpenAIModel, 'GPT4ALL': GPT4AllModel}
 
     def __init__(self) -> None:
         super().__init__()
